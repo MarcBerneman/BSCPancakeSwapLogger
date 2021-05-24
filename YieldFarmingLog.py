@@ -40,7 +40,7 @@ def main(contract):
     LP = getContractInt(b'totalSupply()')
     print("sum(reserves)/LP: ", (reserve1+reserve2)/LP)
 
-    fname = contract + ".csv"
+    fname = "logged_data/" + contract + ".csv"
     new_file = not os.path.isfile(fname) 
     with open(fname, "a" , newline='') as f:
         writer = csv.writer(f, delimiter=';')

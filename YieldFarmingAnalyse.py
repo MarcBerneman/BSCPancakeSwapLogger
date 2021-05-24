@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def plotFeeGains(contract, name):
-    fname = contract + ".csv"
+    fname = "logged_data/" + contract + ".csv"
     with open(fname, "r" , newline='') as f:
         reader = csv.reader(f, delimiter=';')
         header = reader.__next__()
@@ -30,7 +30,7 @@ def plotFeeGains(contract, name):
     plt.grid()
 
 def plotPrice(contract, name, stable = 0):
-    fname = contract + ".csv"
+    fname = "logged_data/" + contract + ".csv"
     with open(fname, "r" , newline='') as f:
         reader = csv.reader(f, delimiter=';')
         header = reader.__next__()
@@ -51,7 +51,7 @@ def plotPrice(contract, name, stable = 0):
     plt.grid()
 
 def printReservesPerLP(contract, name):
-    fname = contract + ".csv"
+    fname = "logged_data/" + contract + ".csv"
     with open(fname, "r" , newline='') as f:
         reader = csv.reader(f, delimiter=';')
         header = reader.__next__()
@@ -60,10 +60,6 @@ def printReservesPerLP(contract, name):
     LP = df['LP'].to_numpy(dtype = np.longdouble)
     r1 = df['Reserve 1'].to_numpy(dtype = np.longdouble)
     r2 = df['Reserve 2'].to_numpy(dtype = np.longdouble)
-
-    print(f"{name}:")
-    print(f"Reserve 1/LP = {r1[-1]/LP[-1]}")
-    print(f"Reserve 2/LP = {r2[-1]/LP[-1]}")
 
 if __name__ == "__main__":
     names = ["UST-BUSD", "USDT-BUSD", "BUSD-BNB", "BTCB-BUSD", "MNFLX-UST", "MCOIN-UST"]
@@ -85,25 +81,25 @@ if __name__ == "__main__":
     
     plt.tight_layout()
 
-    names = ["MAMZN-UST", "MGOOGL-UST", "MNFLX-UST", "MTSLA-UST", "MCOIN-UST"]
-    contracts = ["0xC05654C66756eBB82c518598c5f1ea1a0199a563", "0xA3BfBbAd526C6B856B1Fdf73F99BCD894761fbf3",
-        "0x91417426C3FEaA3Ca795921eB9FdD9715ad92537", "0xEc6b56a736859AE8ea4bEdA16279Ecd8c60dA7EA", 
-        "0xBCf01a42f6BC42F3Cfe81B05519565044d65D22a"]
-    stable = [1,1,1,1,1]
-    plt.figure(figsize=(10,5))
-    n = 2
-    m = 3
-    for i, contract in enumerate(contracts):
-        plt.subplot(n,m,i+1)
-        plotPrice(contract, names[i], stable[i])
-        if i % m == 0:
-            plt.ylabel("Price (UST)")
-        if i >= (n-1)*m:
-            plt.xlabel("Time (days)")
+    # names = ["MAMZN-UST", "MGOOGL-UST", "MNFLX-UST", "MTSLA-UST", "MCOIN-UST"]
+    # contracts = ["0xC05654C66756eBB82c518598c5f1ea1a0199a563", "0xA3BfBbAd526C6B856B1Fdf73F99BCD894761fbf3",
+    #     "0x91417426C3FEaA3Ca795921eB9FdD9715ad92537", "0xEc6b56a736859AE8ea4bEdA16279Ecd8c60dA7EA", 
+    #     "0xBCf01a42f6BC42F3Cfe81B05519565044d65D22a"]
+    # stable = [1,1,1,1,1]
+    # plt.figure(figsize=(10,5))
+    # n = 2
+    # m = 3
+    # for i, contract in enumerate(contracts):
+    #     plt.subplot(n,m,i+1)
+    #     plotPrice(contract, names[i], stable[i])
+    #     if i % m == 0:
+    #         plt.ylabel("Price (UST)")
+    #     if i >= (n-1)*m:
+    #         plt.xlabel("Time (days)")
     
-    plt.tight_layout()
+    # plt.tight_layout()
 
-    printReservesPerLP("0xBCf01a42f6BC42F3Cfe81B05519565044d65D22a", "MCOIN-UST")
+    # printReservesPerLP("0xBCf01a42f6BC42F3Cfe81B05519565044d65D22a", "MCOIN-UST")
     plt.show()
 
     
