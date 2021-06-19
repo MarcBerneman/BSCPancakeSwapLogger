@@ -4,4 +4,4 @@ Logger for PancakeSwap liquidity pools
 
 # Requirements
 
-BSCScan: pip install bscscan-python
+pip install -r requirements.txt
