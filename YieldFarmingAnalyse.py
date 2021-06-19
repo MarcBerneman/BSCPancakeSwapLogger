@@ -11,8 +11,8 @@ def plotFeeGains(contract, name):
         rows = [row for row in reader]   
     df = DataFrame(data = rows, columns = header)
     t = df['Time'].to_numpy(dtype = np.dtype(float))
-    LP = df['LP'].to_numpy(dtype = np.longdouble)
-    k = df['kLast'].to_numpy(dtype = np.longdouble)
+    LP = df['LP'].to_numpy(dtype = np.dtype(float))
+    k = df['kLast'].to_numpy(dtype = np.dtype(float))
 
     t_days = (t-t[0])/(60*60*24)
     relative_increase = np.sqrt(k/k[0])*LP[0]/LP - 1
