@@ -101,6 +101,6 @@ if __name__ == "__main__":
 
     # printReservesPerLP("0xBCf01a42f6BC42F3Cfe81B05519565044d65D22a", "MCOIN-UST")
     plt.savefig("figure.jpg", dpi=600)
-    plt.show()
+    # plt.show()
 
     
